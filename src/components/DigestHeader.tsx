@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface DigestHeaderProps {
   date: string;
 }
@@ -5,9 +7,17 @@ interface DigestHeaderProps {
 export default function DigestHeader({ date }: DigestHeaderProps) {
   return (
     <header className="mb-14">
-      <h1 className="text-6xl font-bold tracking-tighter uppercase mb-6 leading-none">
-        Briefy
-      </h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-6xl font-bold tracking-tighter uppercase leading-none">
+          Briefy
+        </h1>
+        <Link
+          href="/settings"
+          className="text-xs font-bold uppercase tracking-widest text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+        >
+          ⚙ Config
+        </Link>
+      </div>
       <div className="flex items-center gap-4 border-t border-b border-black dark:border-white py-3">
         <p className="text-xs font-medium uppercase tracking-widest text-neutral-500">
           {date}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import ThemeProvider from "@/components/ThemeProvider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-white`}>
-        <main className="min-h-screen max-w-2xl mx-auto px-6 py-12">
-          {children}
-        </main>
+        <ThemeProvider>
+          <main className="min-h-screen max-w-2xl mx-auto px-6 py-12">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
