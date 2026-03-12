@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { NewsItem } from "@/types/news";
 
 interface NewsCardProps {
@@ -14,9 +15,11 @@ export default function NewsCard({ item }: NewsCardProps) {
 
   return (
     <article className="mb-10 pb-10 border-b border-neutral-100 dark:border-neutral-900 last:border-0">
-      <h3 className="text-2xl font-bold tracking-tight leading-tight mb-4">
-        {item.title}
-      </h3>
+      <Link href={`/news/item/${item.id}`}>
+        <h3 className="text-2xl font-bold tracking-tight leading-tight mb-4 hover:opacity-60 transition-opacity">
+          {item.title}
+        </h3>
+      </Link>
 
       <div className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm">
         {expanded ? (
@@ -30,12 +33,21 @@ export default function NewsCard({ item }: NewsCardProps) {
         )}
       </div>
 
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="mt-4 text-xs font-bold uppercase tracking-widest border-b border-black dark:border-white pb-px hover:opacity-50 transition-opacity"
-      >
-        {expanded ? "Leer menos" : "Leer más"}
-      </button>
+      <div className="flex items-center gap-6 mt-4">
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-xs font-bold uppercase tracking-widest border-b border-black dark:border-white pb-px hover:opacity-50 transition-opacity"
+        >
+          {expanded ? "Leer menos" : "Leer más"}
+        </button>
+
+        <Link
+          href={`/news/item/${item.id}`}
+          className="text-xs font-bold uppercase tracking-widest text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+        >
+          Ver nota completa →
+        </Link>
+      </div>
 
       {expanded && item.sources.length > 0 && (
         <div className="mt-6">
