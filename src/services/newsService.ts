@@ -4,7 +4,7 @@ const API_URL = process.env["NEXT_PUBLIC_API_URL"] ?? "";
 
 export async function getLatestDigest(): Promise<NewsDigest> {
   const res = await fetch(`${API_URL}/news/latest`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {
@@ -17,7 +17,7 @@ export async function getLatestDigest(): Promise<NewsDigest> {
 
 export async function getDigestByDate(date: string): Promise<NewsDigest> {
   const res = await fetch(`${API_URL}/news/${encodeURIComponent(date)}`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {
