@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { Settings } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -16,18 +19,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogoClick = (): void => {
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <nav
         className={`w-full max-w-6xl flex items-center justify-between px-5 py-3 rounded-full border transition-all duration-300 ${
-            scrolled
+          scrolled
             ? "bg-white/30 dark:bg-black/30 backdrop-blur-xl border-neutral-200/30 dark:border-neutral-800/30 shadow-md"
             : "bg-white/50 dark:bg-black/50 backdrop-blur-md border-neutral-200/50 dark:border-neutral-800/50 shadow-sm"
         }`}
-        >
+      >
         <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-baseline gap-0.5 cursor-pointer"
+          onClick={handleLogoClick}
+          className="flex items-baseline gap-0.5 cursor-pointer"
         >
           <span className="text-lg font-black tracking-tighter uppercase">
             Briefy
