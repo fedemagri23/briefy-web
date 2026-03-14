@@ -33,7 +33,7 @@ export default async function NewsDetailPage({ params }: Props) {
         </Link>
       </nav>
 
-      <div className="flex gap-12 items-start">
+      <div className="flex flex-col md:flex-row gap-12 items-start">
         {/* Artículo principal */}
         <article className="flex-1 min-w-0">
           <h1 className="text-4xl font-black tracking-tight leading-tight mb-8">
@@ -67,7 +67,7 @@ export default async function NewsDetailPage({ params }: Props) {
 
         {/* Sidebar de contenido relacionado */}
         {item.videoId && (
-          <aside className="w-64 flex-shrink-0 sticky top-24">
+          <aside className="w-full md:w-64 md:flex-shrink-0 md:sticky md:top-24">
             <p className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-4">
               Relacionado
             </p>
