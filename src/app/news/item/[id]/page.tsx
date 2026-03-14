@@ -1,4 +1,5 @@
 import { getNewsById } from "@/services/newsService";
+import ArticleContent from "@/components/ArticleContent";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -36,11 +37,7 @@ export default async function NewsDetailPage({ params }: Props) {
           {item.title}
         </h1>
 
-        <div className="space-y-5 text-neutral-700 dark:text-neutral-300 leading-relaxed">
-          {item.content.split("\n\n").map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
-        </div>
+        <ArticleContent content={item.content} glossary={item.glossary} />
 
         {item.sources.length > 0 && (
           <footer className="mt-12 pt-8 border-t border-neutral-100 dark:border-neutral-900">

@@ -3,12 +3,17 @@ export interface NewsSource {
   url: string;
 }
 
+export interface GlossaryTerm {
+  term: string;
+  definition: string;
+}
+
 export interface NewsItem {
   id: string;
   title: string;
   content: string;
   sources: NewsSource[];
-  sectionType: "argentina" | "international";
+  glossary: GlossaryTerm[];
 }
 
 export interface NewsSection {
@@ -16,7 +21,10 @@ export interface NewsSection {
   news: NewsItem[];
 }
 
+export type DigestEdition = "morning" | "evening";
+
 export interface NewsDigest {
   date: string;
+  edition: DigestEdition;
   sections: NewsSection[];
 }

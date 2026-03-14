@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { NewsItem } from "@/types/news";
+import ArticleContent from "./ArticleContent";
 
 interface NewsCardProps {
   item: NewsItem;
@@ -11,7 +12,7 @@ interface NewsCardProps {
 export default function NewsCard({ item }: NewsCardProps) {
   const [expanded, setExpanded] = useState(false);
 
-  const preview = item.content.split("\n\n")[0] ?? item.content;
+  const previewContent = item.content.split("\n\n")[0] ?? item.content;
 
   return (
     <article className="mb-10 pb-10 border-b border-neutral-100 dark:border-neutral-900 last:border-0">
@@ -21,17 +22,13 @@ export default function NewsCard({ item }: NewsCardProps) {
         </h3>
       </Link>
 
-      <div className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm">
-        {expanded ? (
-          <div className="space-y-4">
-            {item.content.split("\n\n").map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
-          </div>
-        ) : (
-          <p>{preview}</p>
-        )}
-      </div>
+      {expanded ? (
+        <ArticleContent content={item.content} glossary={item.glossary} />
+      ) : (
+        <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm">
+          {previewContent}
+        </p>
+      )}
 
       <div className="flex items-center gap-6 mt-4">
         <button
