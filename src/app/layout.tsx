@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 import ThemeProvider from "@/components/ThemeProvider";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-space",
-  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -21,9 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-white`}>
+      <body className={`${inter.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-white`}>
         <ThemeProvider>
-          <main className="min-h-screen max-w-2xl mx-auto px-6 py-12">
+          <Navbar />
+          <main className="max-w-6xl mx-auto px-4 pt-28 pb-12">
             {children}
           </main>
         </ThemeProvider>

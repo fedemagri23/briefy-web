@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ThemeSelector from "@/components/ThemeSelector";
+import { Palette } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Configuración — Briefy",
@@ -8,24 +9,18 @@ export const metadata: Metadata = {
 export default function SettingsPage() {
   return (
     <>
-      <nav className="mb-10">
-        <a
-          href="/"
-          className="text-xs font-bold uppercase tracking-widest text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
-        >
-          ← Volver
-        </a>
-      </nav>
-
-      <h1 className="text-4xl font-bold tracking-tight mb-12">
+      <h1 className="text-4xl font-black tracking-tight mb-12">
         Configuración
       </h1>
 
       <section className="space-y-10">
         <div>
-          <h2 className="text-xs font-bold uppercase tracking-widest mb-6 text-neutral-400">
-            Apariencia
-          </h2>
+          <div className="flex items-center gap-2 mb-6">
+            <Palette size={14} strokeWidth={2} className="text-neutral-400" />
+            <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400">
+              Apariencia
+            </h2>
+          </div>
           <ThemeSelector />
         </div>
       </section>
