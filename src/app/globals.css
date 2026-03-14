@@ -5,3 +5,7 @@
 @theme {
   --font-sans: var(--font-inter);
 }
+
+html {
+  scroll-behavior: smooth;
+}
