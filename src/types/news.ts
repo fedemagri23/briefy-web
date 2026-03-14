@@ -14,6 +14,7 @@ export interface NewsItem {
   content: string;
   sources: NewsSource[];
   glossary: GlossaryTerm[];
+  videoId?: string;
 }
 
 export interface NewsSection {
